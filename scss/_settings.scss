@@ -1,0 +1,1161 @@
+//  Foundation for Sites Settings
+//  -----------------------------
+//
+//  Table of Contents:
+//
+//   1. Global
+//   2. Breakpoints
+//   3. The Grid
+//   4. Base Typography
+//   5. Typography Helpers
+//   6. Abide
+//   7. Accordion
+//   8. Accordion Menu
+//   9. Badge
+//  10. Breadcrumbs
+//  11. Button
+//  12. Button Group
+//  13. Callout
+//  14. Close Button
+//  15. Drilldown
+//  16. Dropdown
+//  17. Dropdown Menu
+//  18. Flex Video
+//  19. Forms
+//  20. Label
+//  21. Media Object
+//  22. Menu
+//  23. Meter
+//  24. Off-canvas
+//  25. Orbit
+//  26. Pagination
+//  27. Progress Bar
+//  28. Reveal
+//  29. Slider
+//  30. Switch
+//  31. Table
+//  32. Tabs
+//  33. Thumbnail
+//  34. Title Bar
+//  35. Tooltip
+//  36. Top Bar
+
+@import 'util/util';
+
+// 1. Global
+// ---------
+
+$global-font-size: 100%;
+$global-width: rem-calc(1200);
+$global-lineheight: 1.5;
+$foundation-palette: (
+  primary: #2199e8,
+  secondary: #777,
+  success: #3adb76,
+  warning: #ffae00,
+  alert: #ec5840,
+);
+$light-gray: #e6e6e6;
+$medium-gray: #cacaca;
+$dark-gray: #8a8a8a;
+$black: #0a0a0a;
+$white: #fefefe;
+$body-background: $white;
+$body-font-color: $black;
+$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$body-antialiased: true;
+$global-margin: 1rem;
+$global-padding: 1rem;
+$global-weight-normal: normal;
+$global-weight-bold: bold;
+$global-radius: 0;
+$global-text-direction: ltr;
+$global-flexbox: false;
+$print-transparent-backgrounds: true;
+
+@include add-foundation-colors;
+
+// 2. Breakpoints
+// --------------
+
+$breakpoints: (
+  small: 0,
+  medium: 640px,
+  large: 1024px,
+  xlarge: 1200px,
+  xxlarge: 1440px,
+);
+$breakpoint-classes: (small medium large);
+
+// 3. The Grid
+// -----------
+
+$grid-row-width: $global-width;
+$grid-column-count: 12;
+$grid-column-gutter: (
+  small: 20px,
+  medium: 30px,
+);
+$grid-column-align-edge: true;
+$block-grid-max: 8;
+
+// 4. Base Typography
+// ------------------
+
+$header-font-family: $body-font-family;
+$header-font-weight: $global-weight-normal;
+$header-font-style: normal;
+$font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
+$header-sizes: (
+  small: (
+    'h1': 24,
+    'h2': 20,
+    'h3': 19,
+    'h4': 18,
+    'h5': 17,
+    'h6': 16,
+  ),
+  medium: (
+    'h1': 48,
+    'h2': 40,
+    'h3': 31,
+    'h4': 25,
+    'h5': 20,
+    'h6': 16,
+  ),
+);
+$header-color: inherit;
+$header-lineheight: 1.4;
+$header-margin-bottom: 0.5rem;
+$header-text-rendering: optimizeLegibility;
+$small-font-size: 80%;
+$header-small-font-color: $medium-gray;
+$paragraph-lineheight: 1.6;
+$paragraph-margin-bottom: 1rem;
+$paragraph-text-rendering: optimizeLegibility;
+$code-color: $black;
+$code-font-family: $font-family-monospace;
+$code-font-weight: $global-weight-normal;
+$code-background: $light-gray;
+$code-border: 1px solid $medium-gray;
+$code-padding: rem-calc(2 5 1);
+$anchor-color: $primary-color;
+$anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
+$anchor-text-decoration: none;
+$anchor-text-decoration-hover: none;
+$hr-width: $global-width;
+$hr-border: 1px solid $medium-gray;
+$hr-margin: rem-calc(20) auto;
+$list-lineheight: $paragraph-lineheight;
+$list-margin-bottom: $paragraph-margin-bottom;
+$list-style-type: disc;
+$list-style-position: outside;
+$list-side-margin: 1.25rem;
+$list-nested-side-margin: 1.25rem;
+$defnlist-margin-bottom: 1rem;
+$defnlist-term-weight: $global-weight-bold;
+$defnlist-term-margin-bottom: 0.3rem;
+$blockquote-color: $dark-gray;
+$blockquote-padding: rem-calc(9 20 0 19);
+$blockquote-border: 1px solid $medium-gray;
+$cite-font-size: rem-calc(13);
+$cite-color: $dark-gray;
+$keystroke-font: $font-family-monospace;
+$keystroke-color: $black;
+$keystroke-background: $light-gray;
+$keystroke-padding: rem-calc(2 4 0);
+$keystroke-radius: $global-radius;
+$abbr-underline: 1px dotted $black;
+
+// 5. Typography Helpers
+// ---------------------
+
+$lead-font-size: $global-font-size * 1.25;
+$lead-lineheight: 1.6;
+$subheader-lineheight: 1.4;
+$subheader-color: $dark-gray;
+$subheader-font-weight: $global-weight-normal;
+$subheader-margin-top: 0.2rem;
+$subheader-margin-bottom: 0.5rem;
+$stat-font-size: 2.5rem;
+
+// 6. Abide
+// --------
+
+$abide-inputs: true;
+$abide-labels: true;
+$input-background-invalid: map-get($foundation-palette, alert);
+$form-label-color-invalid: map-get($foundation-palette, alert);
+$input-error-color: map-get($foundation-palette, alert);
+$input-error-font-size: rem-calc(12);
+$input-error-font-weight: $global-weight-bold;
+
+// 7. Accordion
+// ------------
+
+$accordion-background: $white;
+$accordion-plusminus: true;
+$accordion-item-color: foreground($accordion-background, $primary-color);
+$accordion-item-background-hover: $light-gray;
+$accordion-item-padding: 1.25rem 1rem;
+$accordion-content-background: $white;
+$accordion-content-border: 1px solid $light-gray;
+$accordion-content-color: foreground($accordion-background, $primary-color);
+$accordion-content-padding: 1rem;
+
+// 8. Accordion Menu
+// -----------------
+
+$accordionmenu-arrows: true;
+$accordionmenu-arrow-color: $primary-color;
+
+// 9. Badge
+// --------
+
+$badge-background: $primary-color;
+$badge-color: foreground($badge-background);
+$badge-padding: 0.3em;
+$badge-minwidth: 2.1em;
+$badge-font-size: 0.6rem;
+
+// 10. Breadcrumbs
+// ---------------
+
+$breadcrumbs-margin: 0 0 $global-margin 0;
+$breadcrumbs-item-font-size: rem-calc(11);
+$breadcrumbs-item-color: $primary-color;
+$breadcrumbs-item-color-current: $black;
+$breadcrumbs-item-color-disabled: $medium-gray;
+$breadcrumbs-item-margin: 0.75rem;
+$breadcrumbs-item-uppercase: true;
+$breadcrumbs-item-slash: true;
+
+// 11. Button
+// ----------
+
+$button-padding: 0.85em 1em;
+$button-margin: 0 0 $global-margin 0;
+$button-fill: solid;
+$button-background: $primary-color;
+$button-background-hover: scale-color($button-background, $lightness: -15%);
+$button-color: $white;
+$button-color-alt: $black;
+$button-radius: $global-radius;
+$button-sizes: (
+  tiny: 0.6rem,
+  small: 0.75rem,
+  default: 0.9rem,
+  large: 1.25rem,
+);
+$button-opacity-disabled: 0.25;
+
+// 12. Button Group
+// ----------------
+
+$buttongroup-margin: 1rem;
+$buttongroup-spacing: 1px;
+$buttongroup-child-selector: '.button';
+$buttongroup-expand-max: 6;
+
+// 13. Callout
+// -----------
+
+$callout-background: $white;
+$callout-background-fade: 85%;
+$callout-border: 1px solid rgba($black, 0.25);
+$callout-margin: 0 0 1rem 0;
+$callout-padding: 1rem;
+$callout-font-color: $body-font-color;
+$callout-font-color-alt: $body-background;
+$callout-radius: $global-radius;
+$callout-link-tint: 30%;
+
+// 14. Close Button
+// ----------------
+
+$closebutton-position: right top;
+$closebutton-offset-horizontal: 1rem;
+$closebutton-offset-vertical: 0.5rem;
+$closebutton-size: 2em;
+$closebutton-lineheight: 1;
+$closebutton-color: $dark-gray;
+$closebutton-color-hover: $black;
+
+// 15. Drilldown
+// -------------
+
+$drilldown-transition: transform 0.15s linear;
+$drilldown-arrows: true;
+$drilldown-arrow-color: $primary-color;
+$drilldown-background: $white;
+
+// 16. Dropdown
+// ------------
+
+$dropdown-padding: 1rem;
+$dropdown-border: 1px solid $medium-gray;
+$dropdown-font-size: 1rem;
+$dropdown-width: 300px;
+$dropdown-radius: $global-radius;
+$dropdown-sizes: (
+  tiny: 100px,
+  small: 200px,
+  large: 400px,
+);
+
+// 17. Dropdown Menu
+// -----------------
+
+$dropdownmenu-arrows: true;
+$dropdownmenu-arrow-color: $anchor-color;
+$dropdownmenu-min-width: 200px;
+$dropdownmenu-background: $white;
+$dropdownmenu-border: 1px solid $medium-gray;
+
+// 18. Flex Video
+// --------------
+
+$flexvideo-margin-bottom: rem-calc(16);
+$flexvideo-ratio: 4 by 3;
+$flexvideo-ratio-widescreen: 16 by 9;
+
+// 19. Forms
+// ---------
+
+$fieldset-border: 1px solid $medium-gray;
+$fieldset-padding: rem-calc(20);
+$fieldset-margin: rem-calc(18 0);
+$legend-padding: rem-calc(0 3);
+$form-spacing: rem-calc(16);
+$helptext-color: $black;
+$helptext-font-size: rem-calc(13);
+$helptext-font-style: italic;
+$input-prefix-color: $black;
+$input-prefix-background: $light-gray;
+$input-prefix-border: 1px solid $medium-gray;
+$input-prefix-padding: 1rem;
+$form-label-color: $black;
+$form-label-font-size: rem-calc(14);
+$form-label-font-weight: $global-weight-normal;
+$form-label-line-height: 1.8;
+$select-background: $white;
+$select-triangle-color: $dark-gray;
+$select-radius: $global-radius;
+$input-color: $black;
+$input-placeholder-color: $medium-gray;
+$input-font-family: inherit;
+$input-font-size: rem-calc(16);
+$input-background: $white;
+$input-background-focus: $white;
+$input-background-disabled: $light-gray;
+$input-border: 1px solid $medium-gray;
+$input-border-focus: 1px solid $dark-gray;
+$input-shadow: inset 0 1px 2px rgba($black, 0.1);
+$input-shadow-focus: 0 0 5px $medium-gray;
+$input-cursor-disabled: default;
+$input-transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+$input-number-spinners: true;
+$input-radius: $global-radius;
+
+// 20. Label
+// ---------
+
+$label-background: $primary-color;
+$label-color: foreground($label-background);
+$label-font-size: 0.8rem;
+$label-padding: 0.33333rem 0.5rem;
+$label-radius: $global-radius;
+
+// 21. Media Object
+// ----------------
+
+$mediaobject-margin-bottom: $global-margin;
+$mediaobject-section-padding: $global-padding;
+$mediaobject-image-width-stacked: 100%;
+
+// 22. Menu
+// --------
+
+$menu-margin: 0;
+$menu-margin-nested: 1rem;
+$menu-item-padding: 0.7rem 1rem;
+$menu-item-color-active: $white;
+$menu-item-background-active: map-get($foundation-palette, primary);
+$menu-icon-spacing: 0.25rem;
+
+// 23. Meter
+// ---------
+
+$meter-height: 1rem;
+$meter-radius: $global-radius;
+$meter-background: $medium-gray;
+$meter-fill-good: $success-color;
+$meter-fill-medium: $warning-color;
+$meter-fill-bad: $alert-color;
+
+// 24. Off-canvas
+// --------------
+
+$offcanvas-size: 250px;
+$offcanvas-background: $light-gray;
+$offcanvas-zindex: -1;
+$offcanvas-transition-length: 0.5s;
+$offcanvas-transition-timing: ease;
+$offcanvas-fixed-reveal: true;
+$offcanvas-exit-background: rgba($white, 0.25);
+$maincontent-class: 'off-canvas-content';
+$maincontent-shadow: 0 0 10px rgba($black, 0.5);
+
+// 25. Orbit
+// ---------
+
+$orbit-bullet-background: $medium-gray;
+$orbit-bullet-background-active: $dark-gray;
+$orbit-bullet-diameter: 1.2rem;
+$orbit-bullet-margin: 0.1rem;
+$orbit-bullet-margin-top: 0.8rem;
+$orbit-bullet-margin-bottom: 0.8rem;
+$orbit-caption-background: rgba($black, 0.5);
+$orbit-caption-padding: 1rem;
+$orbit-control-background-hover: rgba($black, 0.5);
+$orbit-control-padding: 1rem;
+$orbit-control-zindex: 10;
+
+// 26. Pagination
+// --------------
+
+$pagination-font-size: rem-calc(14);
+$pagination-margin-bottom: $global-margin;
+$pagination-item-color: $black;
+$pagination-item-padding: rem-calc(3 10);
+$pagination-item-spacing: rem-calc(1);
+$pagination-radius: $global-radius;
+$pagination-item-background-hover: $light-gray;
+$pagination-item-background-current: $primary-color;
+$pagination-item-color-current: foreground($pagination-item-background-current);
+$pagination-item-color-disabled: $medium-gray;
+$pagination-ellipsis-color: $black;
+$pagination-mobile-items: false;
+$pagination-arrows: true;
+
+// 27. Progress Bar
+// ----------------
+
+$progress-height: 1rem;
+$progress-background: $medium-gray;
+$progress-margin-bottom: $global-margin;
+$progress-meter-background: $primary-color;
+$progress-radius: $global-radius;
+
+// 28. Reveal
+// ----------
+
+$reveal-background: $white;
+$reveal-width: 600px;
+$reveal-max-width: $global-width;
+$reveal-padding: $global-padding;
+$reveal-border: 1px solid $medium-gray;
+$reveal-radius: $global-radius;
+$reveal-zindex: 1005;
+$reveal-overlay-background: rgba($black, 0.45);
+
+// 29. Slider
+// ----------
+
+$slider-width-vertical: 0.5rem;
+$slider-transition: all 0.2s ease-in-out;
+$slider-height: 0.5rem;
+$slider-background: $light-gray;
+$slider-fill-background: $medium-gray;
+$slider-handle-height: 1.4rem;
+$slider-handle-width: 1.4rem;
+$slider-handle-background: $primary-color;
+$slider-opacity-disabled: 0.25;
+$slider-radius: $global-radius;
+
+// 30. Switch
+// ----------
+
+$switch-background: $medium-gray;
+$switch-background-active: $primary-color;
+$switch-height: 2rem;
+$switch-height-tiny: 1.5rem;
+$switch-height-small: 1.75rem;
+$switch-height-large: 2.5rem;
+$switch-radius: $global-radius;
+$switch-margin: $global-margin;
+$switch-paddle-background: $white;
+$switch-paddle-offset: 0.25rem;
+$switch-paddle-radius: $global-radius;
+$switch-paddle-transition: all 0.25s ease-out;
+
+// 31. Table
+// ---------
+
+$table-background: $white;
+$table-color-scale: 5%;
+$table-border: 1px solid smart-scale($table-background, $table-color-scale);
+$table-padding: rem-calc(8 10 10);
+$table-hover-scale: 2%;
+$table-row-hover: darken($table-background, $table-hover-scale);
+$table-row-stripe-hover: darken($table-background, $table-color-scale + $table-hover-scale);
+$table-striped-background: smart-scale($table-background, $table-color-scale);
+$table-stripe: even;
+$table-head-background: smart-scale($table-background, $table-color-scale / 2);
+$table-foot-background: smart-scale($table-background, $table-color-scale);
+$table-head-font-color: $body-font-color;
+$show-header-for-stacked: false;
+
+// 32. Tabs
+// --------
+
+$tab-margin: 0;
+$tab-background: $white;
+$tab-background-active: $light-gray;
+$tab-item-font-size: rem-calc(12);
+$tab-item-background-hover: $white;
+$tab-item-padding: 1.25rem 1.5rem;
+$tab-expand-max: 6;
+$tab-content-background: $white;
+$tab-content-border: $light-gray;
+$tab-content-color: foreground($tab-background, $primary-color);
+$tab-content-padding: 1rem;
+
+// 33. Thumbnail
+// -------------
+
+$thumbnail-border: solid 4px $white;
+$thumbnail-margin-bottom: $global-margin;
+$thumbnail-shadow: 0 0 0 1px rgba($black, 0.2);
+$thumbnail-shadow-hover: 0 0 6px 1px rgba($primary-color, 0.5);
+$thumbnail-transition: box-shadow 200ms ease-out;
+$thumbnail-radius: $global-radius;
+
+// 34. Title Bar
+// -------------
+
+$titlebar-background: $black;
+$titlebar-color: $white;
+$titlebar-padding: 0.5rem;
+$titlebar-text-font-weight: bold;
+$titlebar-icon-color: $white;
+$titlebar-icon-color-hover: $medium-gray;
+$titlebar-icon-spacing: 0.25rem;
+
+// 35. Tooltip
+// -----------
+
+$has-tip-font-weight: $global-weight-bold;
+$has-tip-border-bottom: dotted 1px $dark-gray;
+$tooltip-background-color: $black;
+$tooltip-color: $white;
+$tooltip-padding: 0.75rem;
+$tooltip-font-size: $small-font-size;
+$tooltip-pip-width: 0.75rem;
+$tooltip-pip-height: $tooltip-pip-width * 0.866;
+$tooltip-radius: $global-radius;
+
+// 36. Top Bar
+// -----------
+
+$topbar-padding: 0.5rem;
+$topbar-background: $light-gray;
+$topbar-submenu-background: $topbar-background;
+$topbar-title-spacing: 1rem;
+$topbar-input-width: 200px;
+$topbar-unstack-breakpoint: medium;
+
+/* 
+ * Foundation Icons v 3.0
+ * Made by ZURB 2013 http://zurb.com/playground/foundation-icon-fonts-3
+ * MIT License
+ */
+
+@font-face {
+  font-family: "foundation-icons";
+  src: url("foundation-icons.eot");
+  src: url("foundation-icons.eot?#iefix") format("embedded-opentype"),
+       url("foundation-icons.woff") format("woff"),
+       url("foundation-icons.ttf") format("truetype"),
+       url("foundation-icons.svg#fontcustom") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.fi-address-book:before,
+.fi-alert:before,
+.fi-align-center:before,
+.fi-align-justify:before,
+.fi-align-left:before,
+.fi-align-right:before,
+.fi-anchor:before,
+.fi-annotate:before,
+.fi-archive:before,
+.fi-arrow-down:before,
+.fi-arrow-left:before,
+.fi-arrow-right:before,
+.fi-arrow-up:before,
+.fi-arrows-compress:before,
+.fi-arrows-expand:before,
+.fi-arrows-in:before,
+.fi-arrows-out:before,
+.fi-asl:before,
+.fi-asterisk:before,
+.fi-at-sign:before,
+.fi-background-color:before,
+.fi-battery-empty:before,
+.fi-battery-full:before,
+.fi-battery-half:before,
+.fi-bitcoin-circle:before,
+.fi-bitcoin:before,
+.fi-blind:before,
+.fi-bluetooth:before,
+.fi-bold:before,
+.fi-book-bookmark:before,
+.fi-book:before,
+.fi-bookmark:before,
+.fi-braille:before,
+.fi-burst-new:before,
+.fi-burst-sale:before,
+.fi-burst:before,
+.fi-calendar:before,
+.fi-camera:before,
+.fi-check:before,
+.fi-checkbox:before,
+.fi-clipboard-notes:before,
+.fi-clipboard-pencil:before,
+.fi-clipboard:before,
+.fi-clock:before,
+.fi-closed-caption:before,
+.fi-cloud:before,
+.fi-comment-minus:before,
+.fi-comment-quotes:before,
+.fi-comment-video:before,
+.fi-comment:before,
+.fi-comments:before,
+.fi-compass:before,
+.fi-contrast:before,
+.fi-credit-card:before,
+.fi-crop:before,
+.fi-crown:before,
+.fi-css3:before,
+.fi-database:before,
+.fi-die-five:before,
+.fi-die-four:before,
+.fi-die-one:before,
+.fi-die-six:before,
+.fi-die-three:before,
+.fi-die-two:before,
+.fi-dislike:before,
+.fi-dollar-bill:before,
+.fi-dollar:before,
+.fi-download:before,
+.fi-eject:before,
+.fi-elevator:before,
+.fi-euro:before,
+.fi-eye:before,
+.fi-fast-forward:before,
+.fi-female-symbol:before,
+.fi-female:before,
+.fi-filter:before,
+.fi-first-aid:before,
+.fi-flag:before,
+.fi-folder-add:before,
+.fi-folder-lock:before,
+.fi-folder:before,
+.fi-foot:before,
+.fi-foundation:before,
+.fi-graph-bar:before,
+.fi-graph-horizontal:before,
+.fi-graph-pie:before,
+.fi-graph-trend:before,
+.fi-guide-dog:before,
+.fi-hearing-aid:before,
+.fi-heart:before,
+.fi-home:before,
+.fi-html5:before,
+.fi-indent-less:before,
+.fi-indent-more:before,
+.fi-info:before,
+.fi-italic:before,
+.fi-key:before,
+.fi-laptop:before,
+.fi-layout:before,
+.fi-lightbulb:before,
+.fi-like:before,
+.fi-link:before,
+.fi-list-bullet:before,
+.fi-list-number:before,
+.fi-list-thumbnails:before,
+.fi-list:before,
+.fi-lock:before,
+.fi-loop:before,
+.fi-magnifying-glass:before,
+.fi-mail:before,
+.fi-male-female:before,
+.fi-male-symbol:before,
+.fi-male:before,
+.fi-map:before,
+.fi-marker:before,
+.fi-megaphone:before,
+.fi-microphone:before,
+.fi-minus-circle:before,
+.fi-minus:before,
+.fi-mobile-signal:before,
+.fi-mobile:before,
+.fi-monitor:before,
+.fi-mountains:before,
+.fi-music:before,
+.fi-next:before,
+.fi-no-dogs:before,
+.fi-no-smoking:before,
+.fi-page-add:before,
+.fi-page-copy:before,
+.fi-page-csv:before,
+.fi-page-delete:before,
+.fi-page-doc:before,
+.fi-page-edit:before,
+.fi-page-export-csv:before,
+.fi-page-export-doc:before,
+.fi-page-export-pdf:before,
+.fi-page-export:before,
+.fi-page-filled:before,
+.fi-page-multiple:before,
+.fi-page-pdf:before,
+.fi-page-remove:before,
+.fi-page-search:before,
+.fi-page:before,
+.fi-paint-bucket:before,
+.fi-paperclip:before,
+.fi-pause:before,
+.fi-paw:before,
+.fi-paypal:before,
+.fi-pencil:before,
+.fi-photo:before,
+.fi-play-circle:before,
+.fi-play-video:before,
+.fi-play:before,
+.fi-plus:before,
+.fi-pound:before,
+.fi-power:before,
+.fi-previous:before,
+.fi-price-tag:before,
+.fi-pricetag-multiple:before,
+.fi-print:before,
+.fi-prohibited:before,
+.fi-projection-screen:before,
+.fi-puzzle:before,
+.fi-quote:before,
+.fi-record:before,
+.fi-refresh:before,
+.fi-results-demographics:before,
+.fi-results:before,
+.fi-rewind-ten:before,
+.fi-rewind:before,
+.fi-rss:before,
+.fi-safety-cone:before,
+.fi-save:before,
+.fi-share:before,
+.fi-sheriff-badge:before,
+.fi-shield:before,
+.fi-shopping-bag:before,
+.fi-shopping-cart:before,
+.fi-shuffle:before,
+.fi-skull:before,
+.fi-social-500px:before,
+.fi-social-adobe:before,
+.fi-social-amazon:before,
+.fi-social-android:before,
+.fi-social-apple:before,
+.fi-social-behance:before,
+.fi-social-bing:before,
+.fi-social-blogger:before,
+.fi-social-delicious:before,
+.fi-social-designer-news:before,
+.fi-social-deviant-art:before,
+.fi-social-digg:before,
+.fi-social-dribbble:before,
+.fi-social-drive:before,
+.fi-social-dropbox:before,
+.fi-social-evernote:before,
+.fi-social-facebook:before,
+.fi-social-flickr:before,
+.fi-social-forrst:before,
+.fi-social-foursquare:before,
+.fi-social-game-center:before,
+.fi-social-github:before,
+.fi-social-google-plus:before,
+.fi-social-hacker-news:before,
+.fi-social-hi5:before,
+.fi-social-instagram:before,
+.fi-social-joomla:before,
+.fi-social-lastfm:before,
+.fi-social-linkedin:before,
+.fi-social-medium:before,
+.fi-social-myspace:before,
+.fi-social-orkut:before,
+.fi-social-path:before,
+.fi-social-picasa:before,
+.fi-social-pinterest:before,
+.fi-social-rdio:before,
+.fi-social-reddit:before,
+.fi-social-skillshare:before,
+.fi-social-skype:before,
+.fi-social-smashing-mag:before,
+.fi-social-snapchat:before,
+.fi-social-spotify:before,
+.fi-social-squidoo:before,
+.fi-social-stack-overflow:before,
+.fi-social-steam:before,
+.fi-social-stumbleupon:before,
+.fi-social-treehouse:before,
+.fi-social-tumblr:before,
+.fi-social-twitter:before,
+.fi-social-vimeo:before,
+.fi-social-windows:before,
+.fi-social-xbox:before,
+.fi-social-yahoo:before,
+.fi-social-yelp:before,
+.fi-social-youtube:before,
+.fi-social-zerply:before,
+.fi-social-zurb:before,
+.fi-sound:before,
+.fi-star:before,
+.fi-stop:before,
+.fi-strikethrough:before,
+.fi-subscript:before,
+.fi-superscript:before,
+.fi-tablet-landscape:before,
+.fi-tablet-portrait:before,
+.fi-target-two:before,
+.fi-target:before,
+.fi-telephone-accessible:before,
+.fi-telephone:before,
+.fi-text-color:before,
+.fi-thumbnails:before,
+.fi-ticket:before,
+.fi-torso-business:before,
+.fi-torso-female:before,
+.fi-torso:before,
+.fi-torsos-all-female:before,
+.fi-torsos-all:before,
+.fi-torsos-female-male:before,
+.fi-torsos-male-female:before,
+.fi-torsos:before,
+.fi-trash:before,
+.fi-trees:before,
+.fi-trophy:before,
+.fi-underline:before,
+.fi-universal-access:before,
+.fi-unlink:before,
+.fi-unlock:before,
+.fi-upload-cloud:before,
+.fi-upload:before,
+.fi-usb:before,
+.fi-video:before,
+.fi-volume-none:before,
+.fi-volume-strike:before,
+.fi-volume:before,
+.fi-web:before,
+.fi-wheelchair:before,
+.fi-widget:before,
+.fi-wrench:before,
+.fi-x-circle:before,
+.fi-x:before,
+.fi-yen:before,
+.fi-zoom-in:before,
+.fi-zoom-out:before {
+  font-family: "foundation-icons";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  text-decoration: inherit;
+}
+
+.fi-address-book:before { content: "\f100"; }
+.fi-alert:before { content: "\f101"; }
+.fi-align-center:before { content: "\f102"; }
+.fi-align-justify:before { content: "\f103"; }
+.fi-align-left:before { content: "\f104"; }
+.fi-align-right:before { content: "\f105"; }
+.fi-anchor:before { content: "\f106"; }
+.fi-annotate:before { content: "\f107"; }
+.fi-archive:before { content: "\f108"; }
+.fi-arrow-down:before { content: "\f109"; }
+.fi-arrow-left:before { content: "\f10a"; }
+.fi-arrow-right:before { content: "\f10b"; }
+.fi-arrow-up:before { content: "\f10c"; }
+.fi-arrows-compress:before { content: "\f10d"; }
+.fi-arrows-expand:before { content: "\f10e"; }
+.fi-arrows-in:before { content: "\f10f"; }
+.fi-arrows-out:before { content: "\f110"; }
+.fi-asl:before { content: "\f111"; }
+.fi-asterisk:before { content: "\f112"; }
+.fi-at-sign:before { content: "\f113"; }
+.fi-background-color:before { content: "\f114"; }
+.fi-battery-empty:before { content: "\f115"; }
+.fi-battery-full:before { content: "\f116"; }
+.fi-battery-half:before { content: "\f117"; }
+.fi-bitcoin-circle:before { content: "\f118"; }
+.fi-bitcoin:before { content: "\f119"; }
+.fi-blind:before { content: "\f11a"; }
+.fi-bluetooth:before { content: "\f11b"; }
+.fi-bold:before { content: "\f11c"; }
+.fi-book-bookmark:before { content: "\f11d"; }
+.fi-book:before { content: "\f11e"; }
+.fi-bookmark:before { content: "\f11f"; }
+.fi-braille:before { content: "\f120"; }
+.fi-burst-new:before { content: "\f121"; }
+.fi-burst-sale:before { content: "\f122"; }
+.fi-burst:before { content: "\f123"; }
+.fi-calendar:before { content: "\f124"; }
+.fi-camera:before { content: "\f125"; }
+.fi-check:before { content: "\f126"; }
+.fi-checkbox:before { content: "\f127"; }
+.fi-clipboard-notes:before { content: "\f128"; }
+.fi-clipboard-pencil:before { content: "\f129"; }
+.fi-clipboard:before { content: "\f12a"; }
+.fi-clock:before { content: "\f12b"; }
+.fi-closed-caption:before { content: "\f12c"; }
+.fi-cloud:before { content: "\f12d"; }
+.fi-comment-minus:before { content: "\f12e"; }
+.fi-comment-quotes:before { content: "\f12f"; }
+.fi-comment-video:before { content: "\f130"; }
+.fi-comment:before { content: "\f131"; }
+.fi-comments:before { content: "\f132"; }
+.fi-compass:before { content: "\f133"; }
+.fi-contrast:before { content: "\f134"; }
+.fi-credit-card:before { content: "\f135"; }
+.fi-crop:before { content: "\f136"; }
+.fi-crown:before { content: "\f137"; }
+.fi-css3:before { content: "\f138"; }
+.fi-database:before { content: "\f139"; }
+.fi-die-five:before { content: "\f13a"; }
+.fi-die-four:before { content: "\f13b"; }
+.fi-die-one:before { content: "\f13c"; }
+.fi-die-six:before { content: "\f13d"; }
+.fi-die-three:before { content: "\f13e"; }
+.fi-die-two:before { content: "\f13f"; }
+.fi-dislike:before { content: "\f140"; }
+.fi-dollar-bill:before { content: "\f141"; }
+.fi-dollar:before { content: "\f142"; }
+.fi-download:before { content: "\f143"; }
+.fi-eject:before { content: "\f144"; }
+.fi-elevator:before { content: "\f145"; }
+.fi-euro:before { content: "\f146"; }
+.fi-eye:before { content: "\f147"; }
+.fi-fast-forward:before { content: "\f148"; }
+.fi-female-symbol:before { content: "\f149"; }
+.fi-female:before { content: "\f14a"; }
+.fi-filter:before { content: "\f14b"; }
+.fi-first-aid:before { content: "\f14c"; }
+.fi-flag:before { content: "\f14d"; }
+.fi-folder-add:before { content: "\f14e"; }
+.fi-folder-lock:before { content: "\f14f"; }
+.fi-folder:before { content: "\f150"; }
+.fi-foot:before { content: "\f151"; }
+.fi-foundation:before { content: "\f152"; }
+.fi-graph-bar:before { content: "\f153"; }
+.fi-graph-horizontal:before { content: "\f154"; }
+.fi-graph-pie:before { content: "\f155"; }
+.fi-graph-trend:before { content: "\f156"; }
+.fi-guide-dog:before { content: "\f157"; }
+.fi-hearing-aid:before { content: "\f158"; }
+.fi-heart:before { content: "\f159"; }
+.fi-home:before { content: "\f15a"; }
+.fi-html5:before { content: "\f15b"; }
+.fi-indent-less:before { content: "\f15c"; }
+.fi-indent-more:before { content: "\f15d"; }
+.fi-info:before { content: "\f15e"; }
+.fi-italic:before { content: "\f15f"; }
+.fi-key:before { content: "\f160"; }
+.fi-laptop:before { content: "\f161"; }
+.fi-layout:before { content: "\f162"; }
+.fi-lightbulb:before { content: "\f163"; }
+.fi-like:before { content: "\f164"; }
+.fi-link:before { content: "\f165"; }
+.fi-list-bullet:before { content: "\f166"; }
+.fi-list-number:before { content: "\f167"; }
+.fi-list-thumbnails:before { content: "\f168"; }
+.fi-list:before { content: "\f169"; }
+.fi-lock:before { content: "\f16a"; }
+.fi-loop:before { content: "\f16b"; }
+.fi-magnifying-glass:before { content: "\f16c"; }
+.fi-mail:before { content: "\f16d"; }
+.fi-male-female:before { content: "\f16e"; }
+.fi-male-symbol:before { content: "\f16f"; }
+.fi-male:before { content: "\f170"; }
+.fi-map:before { content: "\f171"; }
+.fi-marker:before { content: "\f172"; }
+.fi-megaphone:before { content: "\f173"; }
+.fi-microphone:before { content: "\f174"; }
+.fi-minus-circle:before { content: "\f175"; }
+.fi-minus:before { content: "\f176"; }
+.fi-mobile-signal:before { content: "\f177"; }
+.fi-mobile:before { content: "\f178"; }
+.fi-monitor:before { content: "\f179"; }
+.fi-mountains:before { content: "\f17a"; }
+.fi-music:before { content: "\f17b"; }
+.fi-next:before { content: "\f17c"; }
+.fi-no-dogs:before { content: "\f17d"; }
+.fi-no-smoking:before { content: "\f17e"; }
+.fi-page-add:before { content: "\f17f"; }
+.fi-page-copy:before { content: "\f180"; }
+.fi-page-csv:before { content: "\f181"; }
+.fi-page-delete:before { content: "\f182"; }
+.fi-page-doc:before { content: "\f183"; }
+.fi-page-edit:before { content: "\f184"; }
+.fi-page-export-csv:before { content: "\f185"; }
+.fi-page-export-doc:before { content: "\f186"; }
+.fi-page-export-pdf:before { content: "\f187"; }
+.fi-page-export:before { content: "\f188"; }
+.fi-page-filled:before { content: "\f189"; }
+.fi-page-multiple:before { content: "\f18a"; }
+.fi-page-pdf:before { content: "\f18b"; }
+.fi-page-remove:before { content: "\f18c"; }
+.fi-page-search:before { content: "\f18d"; }
+.fi-page:before { content: "\f18e"; }
+.fi-paint-bucket:before { content: "\f18f"; }
+.fi-paperclip:before { content: "\f190"; }
+.fi-pause:before { content: "\f191"; }
+.fi-paw:before { content: "\f192"; }
+.fi-paypal:before { content: "\f193"; }
+.fi-pencil:before { content: "\f194"; }
+.fi-photo:before { content: "\f195"; }
+.fi-play-circle:before { content: "\f196"; }
+.fi-play-video:before { content: "\f197"; }
+.fi-play:before { content: "\f198"; }
+.fi-plus:before { content: "\f199"; }
+.fi-pound:before { content: "\f19a"; }
+.fi-power:before { content: "\f19b"; }
+.fi-previous:before { content: "\f19c"; }
+.fi-price-tag:before { content: "\f19d"; }
+.fi-pricetag-multiple:before { content: "\f19e"; }
+.fi-print:before { content: "\f19f"; }
+.fi-prohibited:before { content: "\f1a0"; }
+.fi-projection-screen:before { content: "\f1a1"; }
+.fi-puzzle:before { content: "\f1a2"; }
+.fi-quote:before { content: "\f1a3"; }
+.fi-record:before { content: "\f1a4"; }
+.fi-refresh:before { content: "\f1a5"; }
+.fi-results-demographics:before { content: "\f1a6"; }
+.fi-results:before { content: "\f1a7"; }
+.fi-rewind-ten:before { content: "\f1a8"; }
+.fi-rewind:before { content: "\f1a9"; }
+.fi-rss:before { content: "\f1aa"; }
+.fi-safety-cone:before { content: "\f1ab"; }
+.fi-save:before { content: "\f1ac"; }
+.fi-share:before { content: "\f1ad"; }
+.fi-sheriff-badge:before { content: "\f1ae"; }
+.fi-shield:before { content: "\f1af"; }
+.fi-shopping-bag:before { content: "\f1b0"; }
+.fi-shopping-cart:before { content: "\f1b1"; }
+.fi-shuffle:before { content: "\f1b2"; }
+.fi-skull:before { content: "\f1b3"; }
+.fi-social-500px:before { content: "\f1b4"; }
+.fi-social-adobe:before { content: "\f1b5"; }
+.fi-social-amazon:before { content: "\f1b6"; }
+.fi-social-android:before { content: "\f1b7"; }
+.fi-social-apple:before { content: "\f1b8"; }
+.fi-social-behance:before { content: "\f1b9"; }
+.fi-social-bing:before { content: "\f1ba"; }
+.fi-social-blogger:before { content: "\f1bb"; }
+.fi-social-delicious:before { content: "\f1bc"; }
+.fi-social-designer-news:before { content: "\f1bd"; }
+.fi-social-deviant-art:before { content: "\f1be"; }
+.fi-social-digg:before { content: "\f1bf"; }
+.fi-social-dribbble:before { content: "\f1c0"; }
+.fi-social-drive:before { content: "\f1c1"; }
+.fi-social-dropbox:before { content: "\f1c2"; }
+.fi-social-evernote:before { content: "\f1c3"; }
+.fi-social-facebook:before { content: "\f1c4"; }
+.fi-social-flickr:before { content: "\f1c5"; }
+.fi-social-forrst:before { content: "\f1c6"; }
+.fi-social-foursquare:before { content: "\f1c7"; }
+.fi-social-game-center:before { content: "\f1c8"; }
+.fi-social-github:before { content: "\f1c9"; }
+.fi-social-google-plus:before { content: "\f1ca"; }
+.fi-social-hacker-news:before { content: "\f1cb"; }
+.fi-social-hi5:before { content: "\f1cc"; }
+.fi-social-instagram:before { content: "\f1cd"; }
+.fi-social-joomla:before { content: "\f1ce"; }
+.fi-social-lastfm:before { content: "\f1cf"; }
+.fi-social-linkedin:before { content: "\f1d0"; }
+.fi-social-medium:before { content: "\f1d1"; }
+.fi-social-myspace:before { content: "\f1d2"; }
+.fi-social-orkut:before { content: "\f1d3"; }
+.fi-social-path:before { content: "\f1d4"; }
+.fi-social-picasa:before { content: "\f1d5"; }
+.fi-social-pinterest:before { content: "\f1d6"; }
+.fi-social-rdio:before { content: "\f1d7"; }
+.fi-social-reddit:before { content: "\f1d8"; }
+.fi-social-skillshare:before { content: "\f1d9"; }
+.fi-social-skype:before { content: "\f1da"; }
+.fi-social-smashing-mag:before { content: "\f1db"; }
+.fi-social-snapchat:before { content: "\f1dc"; }
+.fi-social-spotify:before { content: "\f1dd"; }
+.fi-social-squidoo:before { content: "\f1de"; }
+.fi-social-stack-overflow:before { content: "\f1df"; }
+.fi-social-steam:before { content: "\f1e0"; }
+.fi-social-stumbleupon:before { content: "\f1e1"; }
+.fi-social-treehouse:before { content: "\f1e2"; }
+.fi-social-tumblr:before { content: "\f1e3"; }
+.fi-social-twitter:before { content: "\f1e4"; }
+.fi-social-vimeo:before { content: "\f1e5"; }
+.fi-social-windows:before { content: "\f1e6"; }
+.fi-social-xbox:before { content: "\f1e7"; }
+.fi-social-yahoo:before { content: "\f1e8"; }
+.fi-social-yelp:before { content: "\f1e9"; }
+.fi-social-youtube:before { content: "\f1ea"; }
+.fi-social-zerply:before { content: "\f1eb"; }
+.fi-social-zurb:before { content: "\f1ec"; }
+.fi-sound:before { content: "\f1ed"; }
+.fi-star:before { content: "\f1ee"; }
+.fi-stop:before { content: "\f1ef"; }
+.fi-strikethrough:before { content: "\f1f0"; }
+.fi-subscript:before { content: "\f1f1"; }
+.fi-superscript:before { content: "\f1f2"; }
+.fi-tablet-landscape:before { content: "\f1f3"; }
+.fi-tablet-portrait:before { content: "\f1f4"; }
+.fi-target-two:before { content: "\f1f5"; }
+.fi-target:before { content: "\f1f6"; }
+.fi-telephone-accessible:before { content: "\f1f7"; }
+.fi-telephone:before { content: "\f1f8"; }
+.fi-text-color:before { content: "\f1f9"; }
+.fi-thumbnails:before { content: "\f1fa"; }
+.fi-ticket:before { content: "\f1fb"; }
+.fi-torso-business:before { content: "\f1fc"; }
+.fi-torso-female:before { content: "\f1fd"; }
+.fi-torso:before { content: "\f1fe"; }
+.fi-torsos-all-female:before { content: "\f1ff"; }
+.fi-torsos-all:before { content: "\f200"; }
+.fi-torsos-female-male:before { content: "\f201"; }
+.fi-torsos-male-female:before { content: "\f202"; }
+.fi-torsos:before { content: "\f203"; }
+.fi-trash:before { content: "\f204"; }
+.fi-trees:before { content: "\f205"; }
+.fi-trophy:before { content: "\f206"; }
+.fi-underline:before { content: "\f207"; }
+.fi-universal-access:before { content: "\f208"; }
+.fi-unlink:before { content: "\f209"; }
+.fi-unlock:before { content: "\f20a"; }
+.fi-upload-cloud:before { content: "\f20b"; }
+.fi-upload:before { content: "\f20c"; }
+.fi-usb:before { content: "\f20d"; }
+.fi-video:before { content: "\f20e"; }
+.fi-volume-none:before { content: "\f20f"; }
+.fi-volume-strike:before { content: "\f210"; }
+.fi-volume:before { content: "\f211"; }
+.fi-web:before { content: "\f212"; }
+.fi-wheelchair:before { content: "\f213"; }
+.fi-widget:before { content: "\f214"; }
+.fi-wrench:before { content: "\f215"; }
+.fi-x-circle:before { content: "\f216"; }
+.fi-x:before { content: "\f217"; }
+.fi-yen:before { content: "\f218"; }
+.fi-zoom-in:before { content: "\f219"; }
+.fi-zoom-out:before { content: "\f21a"; }
